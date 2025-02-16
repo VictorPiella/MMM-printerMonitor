@@ -1,0 +1,67 @@
+/*
+ *
+ * MMM-printerMonitor
+ *
+ * Victor Piella
+ * MIT Licensed.
+ *
+ * Custom here your css module
+ *
+ */
+ @import url("https://cdn.jsdelivr.net/npm/@mdi/font@6.9.96/css/materialdesignicons.min.css");
+
+ .MMM-printerMonitor{
+  display: flex;
+ }
+
+.images{
+  position: relative;
+  width: 50%;
+}
+.images img{
+  width: 100%;
+}
+.stream{
+
+}
+.thumbnail{
+  width: 150px;
+  position: absolute;
+  top: -20px;
+  left: -20px;
+}
+.thumbnail img{
+  border: none;
+}
+
+.info{
+  width: 50%;
+  padding: 10px;
+  text-align: center;
+}
+.hidden {
+  display: none;
+}
+
+video, img {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+#progress{
+  font-size: xxx-large;
+}
+
+#temp{
+  display: flex;
+  border-top: 1px solid #ccc;
+  margin-top: 10px;
+  font-size: x-large;
+  text-align: center;
+}
+#bed{
+  border-right: 1px solid #ccc;
+}
+#temp #bed, #temp #tool{
+  flex: 1;
+  margin-top: 10px;
+}

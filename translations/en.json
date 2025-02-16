@@ -1,0 +1,11 @@
+{
+    "STATE": "State",
+    "FILE": "File",
+    "ELAPSED": "Elapsed",
+    "REMAINING": "Remaining",
+    "PERCENT": "Percent",
+    "TEMPS": "Temperatures",
+    "NOZZLE": "Nozzle",
+    "BED": "Bed",
+    "LOADING": "Loading..."
+}
