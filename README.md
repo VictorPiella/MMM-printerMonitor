@@ -23,7 +23,7 @@
 
 2. Clone this repository:
    ```bash
-   git clone https://github.com/your-repo/MMM-printerMonitor.git
+   git clone https://github.com/VictorPiella/MMM-printerMonitor
    ```
 
 3. Navigate to the module folder:
