@@ -9,59 +9,64 @@
  *
  */
  @import url("https://cdn.jsdelivr.net/npm/@mdi/font@6.9.96/css/materialdesignicons.min.css");
-
- .MMM-printerMonitor{
+ .MMM-printerMonitor {
   display: flex;
- }
+}
 
-.images{
+.MMM-printerMonitor .images {
   position: relative;
   width: 50%;
 }
-.images img{
+
+.MMM-printerMonitor .images img {
   width: 100%;
 }
-.stream{
 
-}
-.thumbnail{
+.MMM-printerMonitor .thumbnail {
   width: 150px;
   position: absolute;
   top: -20px;
   left: -20px;
 }
-.thumbnail img{
+
+.MMM-printerMonitor .thumbnail img {
   border: none;
 }
 
-.info{
+.MMM-printerMonitor .info {
   width: 50%;
   padding: 10px;
   text-align: center;
 }
-.hidden {
+
+.MMM-printerMonitor .offline {
   display: none;
 }
 
-video, img {
+.MMM-printerMonitor video,
+.MMM-printerMonitor img {
   border: 1px solid #ccc;
   border-radius: 5px;
 }
-#progress{
+
+.MMM-printerMonitor #progress {
   font-size: xxx-large;
 }
 
-#temp{
+.MMM-printerMonitor #temp {
   display: flex;
   border-top: 1px solid #ccc;
   margin-top: 10px;
   font-size: x-large;
   text-align: center;
 }
-#bed{
+
+.MMM-printerMonitor #bed {
   border-right: 1px solid #ccc;
 }
-#temp #bed, #temp #tool{
+
+.MMM-printerMonitor #temp #bed,
+.MMM-printerMonitor #temp #tool {
   flex: 1;
   margin-top: 10px;
 }

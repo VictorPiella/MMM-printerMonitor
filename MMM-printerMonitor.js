@@ -17,6 +17,7 @@ Module.register("MMM-printerMonitor", {
     start: function () {
         this.printerData = null;
         this.cameraAvailable = true;
+        this.isPrinterOnline = false; // Track printer status
 
         if (!this.config.streamUrl && this.config.url) {
             this.config.streamUrl = `${this.config.url}/webcam/?action=stream`;
@@ -27,6 +28,9 @@ Module.register("MMM-printerMonitor", {
         }
 
         this.sendSocketNotification("INIT_OCTOPRINT", this.config);
+
+        // Check printer status immediately
+        this.sendSocketNotification("REQUEST_UPDATE");
 
         setInterval(() => {
             this.checkCameraStatus();
@@ -54,6 +58,11 @@ Module.register("MMM-printerMonitor", {
     getDom: function () {
         const wrapper = document.createElement("div");
         wrapper.className = "MMM-printerMonitor";
+
+        // Add the "offline" class if the printer is offline
+        if (this.config.hideModuleWhenOffline && !this.isPrinterOnline) {
+            wrapper.classList.add("offline");
+        }
 
         const imagesDiv = document.createElement("div");
         imagesDiv.className = "images";
@@ -139,18 +148,15 @@ Module.register("MMM-printerMonitor", {
                 console.log("Received Printer Data:", payload);
             }
             this.printerData = payload;
+            this.isPrinterOnline = payload && payload.printer && payload.printer.state !== "Offline";
 
-            if (this.config.hideModuleWhenOffline) {
-                this.show();
-            }
             this.updateDom();
         } else if (notification === "PRINTER_OFFLINE") {
             if (this.config.debugMode) {
                 console.log("Printer is offline. Hiding module.");
             }
-            if (this.config.hideModuleWhenOffline) {
-                this.hide();
-            }
+            this.isPrinterOnline = false;
+            this.updateDom();
         }
     },
 
@@ -160,19 +166,5 @@ Module.register("MMM-printerMonitor", {
 
     getFile: function (file) {
         return this.file(file);
-    },
-
-    show: function () {
-        const moduleWrapper = document.getElementById(this.identifier);
-        if (moduleWrapper) {
-            moduleWrapper.classList.remove("hidden");
-        }
-    },
-
-    hide: function () {
-        const moduleWrapper = document.getElementById(this.identifier);
-        if (moduleWrapper) {
-            moduleWrapper.classList.add("hidden");
-        }
-    },
+    }
 });
